@@ -1,3 +1,50 @@
+"
+" Function ShortTabLine from 'Hacking VIM' (Kim Schulz)
+"
+function! ShortTabLine()
+  let ret = ''
+  for i in range(tabpagenr('$'))
+"
+"   select the colour group for highlighting the active tab
+"
+    if i + 1 == tabpagenr()
+      let ret .= '%#errorMsg#'
+    else
+      let ret .= '%#TabLine#'
+    endif
+"
+"   find the buffer name for the tab label
+"
+    let buflist = tabpagebuflist(i + 1)
+    let winnr = tabpagewinnr(i + 1)
+    let buffername = bufname(buflist[winnr - 1])
+    let filename = fnamemodify(buffername,':t')
+"
+"   Check to see if there is no name
+"
+    if filename == ''
+      let filename = '(No Name)'
+    endif
+    if strlen( filename ) > 12
+"
+"     Show up to 12 letters of the file name, truncated to 10
+"     plus an ellipsis if the name is longer then 12
+"
+      let ret .= filename[0:9] . '..'
+    else
+"
+"     Pad the file name, out to 12 letters
+"
+      let ret .= strpart(filename . '          ',0, 12 )
+    endif
+  endfor
+"
+" After the last tab fill with tablinefill  and reset the tab page
+"
+  let ret .= '%#TabLineFill#%T'
+  return ret
+endfunction
+
 fun! vim_addon_AndyLong#Activate(vam_features)
   let g:vim_addon_urweb = { 'use_vim_addon_async' : 1 }
   let g:netrw_silent = 0
@@ -28,8 +75,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   " "JSON", 
   " "vim-addon-povray",
   " "vim-addon-lout",
-
-    " \ "delimitMate",
+  " \ "delimitMate",
   call vam#ActivateAddons(activate,{'auto_install':1})
 
   " command MergePluginFiles call vam#install#MergePluginFiles(g:merge+["tlib"], '\%(cmdlinehelp\|concordance\|evalselection\|glark\|hookcursormoved\|linglang\|livetimestamp\|localvariables\|loremipsum\|my_tinymode\|pim\|scalefont\|setsyntax\|shymenu\|spec\|tassert\|tbak\|tbibtools\|tcalc\|tcomment\|techopair\|tgpg\|tmarks\|tmboxbrowser\|tortoisesvn\|tregisters\|tselectbuffer\|tselectfile\|tsession\|tskeleton\|tstatus\|viki\|vikitasks\)\.vim_merged')
@@ -48,7 +94,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   if !has('gui_running')
     set timeoutlen=200
   endif
- " set guioptions+=c
+  " set guioptions+=c
   set guioptions+=M
   set guioptions-=m
   set guioptions-=T
@@ -110,7 +156,6 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   noremap <m-s-f> :e! %<cr>
 
   command! SlowTerminalSettings :set slow-terminal| set sidescroll=20 | set scrolljump=10 | set noshowcmd
-  noremap <m-s-l> :e test.sql<cr>
 
   noremap <leader>lt :set invlist<cr>
   noremap <leader>iw :set invwrap<cr>
@@ -121,15 +166,75 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   noremap <leader>dg :diffget<cr>
   noremap <leader>du :diffupdate<cr>
   noremap <leader>ts :if exists("syntax_on") <Bar>
-	\   syntax off <Bar>
-	\ else <Bar>
-	\   syntax enable <Bar>
-	\ endif <CR>
+  \   syntax off <Bar>
+  \ else <Bar>
+  \   syntax enable <Bar>
+  \ endif <CR>
   inoremap <s-cr> <esc>o
   noremap <m-s-e><m-s-n> :enew<cr>
   inoremap <c-cr> <esc>O
   noremap <m--> k$
   noremap <m-s-a> <esc>jA
   noremap <m-e> :e<space>
+
+  set foldlevel=1
+  set foldlevelstart=1
+
+  let match_ignorecase=1
+"
+" YankRing plugin options
+"
+  let g:yankring_history_dir = '$VIMHOME'
+  nnoremap <silent> <F2> :YRShow<CR>
+
+"
+" Load generic abbreviations from files'abbreviations.vim' in system-wide
+" locations and personal ones
+"
+  runtime abbreviations.vim
+
+  set tabline=%!ShortTabLine()
+"
+"  Alternative implementation for 'gf'... 
+"
+  map gf :edit <cfile><CR>
+"
+"  ... And add a list of common program file suffixes
+"
+  set suffixesadd=".scl,.cbl,.mtup,.vim,,pl,.sh,.java,.c,.cpp,.h"
+"
+"  Use <Alt-Up>, <Alt-Down> to navigate visually between lines
+"
+  map <A-Down> gj
+  map <A-Up> gk
+  imap <A-Down> <ESC>gji
+  imap <A-Up> <ESC>gki
+"
+"  Use <Alt-PageUp>, <Alt-PageDown> to navigate between buffers
+"
+  nmap <A-PageDown> :bn<CR>
+  nmap <A-PageUp> :bp<CR>
+"
+"  Make 'F1' look for help for words that are close to the cursor
+"
+  imap <F1> <ESC>:exec "help " . expand("<cWORD>")<CR>
+  nmap <F1> :exec "help " . expand("<cWORD>")<CR>
+"
+"  Suggest a spelling for the word at the cursor
+"
+  map <F7> z=
+  imap <F7> <ESC>z=
+"
+"  Place a sign in the file
+"
+  sign define information text=!> linehl=Warning texthl=Error icon=/Users/andy/Pictures/right-arrow.png
+  map <F6> :exe ":sign place 123 line=" . line(".") . " name=information file=" . expand("%:p")<CR>
+  map <S-F6> :sign unplace<CR>
+"
+"  Change default YankRing <Ctrl-N> & <Ctrl-P> (replace paste with next/previous 
+"  yankring items), because they interfere with autocompletion
+"
+  let g:yankring_replace_n_pkey = '<C-S-P>'
+  let g:yankring_replace_n_nkey = '<C-S-N>'
 endf
 
