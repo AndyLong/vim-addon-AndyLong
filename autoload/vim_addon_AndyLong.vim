@@ -5,7 +5,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   let g:config = { 'goto-thing-handler-mapping-lhs' : 'gf' }
 
   let plugins = {
-      \ 'always': ["vim-addon-completion", 'vim-addon-async', 'tlib', "vim-addon-toggle-buffer", "vim-addon-git","vim-addon-mw-utils","snipMate","vim-addon-goto-thing-at-cursor","vim-addon-other", 'matchit.zip', 'Visincr', 'YankRing', 'vcscommand', 'searchInRuntime', 'AutoAlign'],
+      \ 'always': ["vim-addon-completion", 'vim-addon-async', 'tlib', "vim-addon-toggle-buffer", "vim-addon-git","vim-addon-mw-utils","snipMate","vim-addon-goto-thing-at-cursor","vim-addon-other", 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand', 'searchInRuntime', 'AutoAlign'],
       \ 'extra' : ['textobj-diff', "textobj-function",  "narrow_region"],
       \ 'vim': ["reload", 'vim-dev-plugin'],
       \ 'sql': ['vim-addon-sql'],
