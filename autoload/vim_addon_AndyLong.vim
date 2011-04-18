@@ -5,7 +5,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   let g:config = { 'goto-thing-handler-mapping-lhs' : 'gf' }
 
   let plugins = {
-      \ 'always': ["vim-addon-completion", 'vim-addon-async', 'tlib', "vim-addon-toggle-buffer", "vim-addon-git","vim-addon-mw-utils","snipMate","vim-addon-goto-thing-at-cursor","vim-addon-other", 'matchit.zip'],
+      \ 'always': ["vim-addon-completion", 'vim-addon-async', 'tlib', "vim-addon-toggle-buffer", "vim-addon-git","vim-addon-mw-utils","snipMate","vim-addon-goto-thing-at-cursor","vim-addon-other", 'matchit.zip', 'Visincr', 'YankRing', 'vcscommand', 'searchInRuntime', 'AutoAlign'],
       \ 'extra' : ['textobj-diff', "textobj-function",  "narrow_region"],
       \ 'vim': ["reload", 'vim-dev-plugin'],
       \ 'sql': ['vim-addon-sql'],
@@ -73,12 +73,12 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   augroup end
 
 
-  command! AsyncSh call async_porcelaine#LogToBuffer({'cmd':'/bin/sh -i', 'move_last':1, 'prompt': '^.*\$[$] '})
-  command! AsyncCoq call async_porcelaine#LogToBuffer({'cmd':'coqtop', 'move_last':1, 'prompt': '^Coq < '})
-  command! AsyncRubyIrb call repl_ruby#RubyBuffer({'cmd':'irb','move_last' : 1})
-  command! AsyncRubySh call repl_ruby#RubyBuffer({'cmd':'/bin/sh','move_last' : 1})
-  command! AsyncPython call repl_python#PythonBuffer({'cmd':'python -i','move_last' : 1, 'prompt': '^>>> '})
-  command! AsyncSMLNJ call repl_ruby#RubyBuffer({'cmd':'sml','move_last' : 1, 'prompt': '^- '})
+"  command! AsyncSh call async_porcelaine#LogToBuffer({'cmd':'/bin/sh -i', 'move_last':1, 'prompt': '^.*\$[$] '})
+"  command! AsyncCoq call async_porcelaine#LogToBuffer({'cmd':'coqtop', 'move_last':1, 'prompt': '^Coq < '})
+"  command! AsyncRubyIrb call repl_ruby#RubyBuffer({'cmd':'irb','move_last' : 1})
+"  command! AsyncRubySh call repl_ruby#RubyBuffer({'cmd':'/bin/sh','move_last' : 1})
+"  command! AsyncPython call repl_python#PythonBuffer({'cmd':'python -i','move_last' : 1, 'prompt': '^>>> '})
+"  command! AsyncSMLNJ call repl_ruby#RubyBuffer({'cmd':'sml','move_last' : 1, 'prompt': '^- '})
 
   "autocommands:"{{{
     " When editing a file, always jump to the last known cursor position.
