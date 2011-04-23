@@ -66,7 +66,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
       \ 'always': ['vim-addon-completion', 'vim-addon-async', 'tlib', 'vim-addon-toggle-buffer', 'vim-addon-git', 'vim-addon-mw-utils', 'snipMate', 'vim-addon-goto-thing-at-cursor', 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand', 'searchInRuntime', 'AutoAlign', 'Align294', 'vim-addon-signs'], 
       \ 'extra' : ['textobj-diff', 'textobj-function', 'narrow_region'], 
       \ 'vim': ['reload', 'vim-dev-plugin'], 
-      \ 'vme': ['vim-syntax-vme-scl', 'vim-syntax-vme-mtup', 'vim-syntax-vme-ddcl', 'vim-syntax-vme-idmsx', 'vim-syntax-vme-tp-pfile', 'vim-syntax-vme-tp-tpstats', 'vim-syntax-vme-tp-tptext', 'vim-syntax-vme-tp-tsin' ], 
+      \ 'vme': ['github:AndyLong/vim-syntax-vme-scl', 'github:AndyLong/vim-syntax-vme-mtup', 'github:AndyLong/vim-syntax-vme-ddcl', 'github:AndyLong/vim-syntax-vme-idmsx', 'github:AndyLong/vim-syntax-vme-tp-pfile', 'github:AndyLong/vim-syntax-vme-tp-tpstats', 'github:AndyLong/vim-syntax-vme-tp-tptext', 'github:AndyLong/vim-syntax-vme-tp-tsin' ], 
       \ 'sql': ['vim-addon-sql'], 
       \ 'urweb': ['vim-addon-urweb'], 
       \ 'nix' : ['vim-addon-nix'], 
