@@ -1,4 +1,15 @@
 "
+"  function 'SitePrefix' culled from 'Author' by Luc Hermitte(?) in his
+"  mu-template file
+"
+function! SitePrefix(...)
+  let short = (a:0>0 && a:1==1) ? '_short' : ''
+  if     exists('b:siteprefix'.short) | return b:siteprefix{short}
+  elseif exists('g:siteprefix'.short) | return g:siteprefix{short}
+  else                            | return ''
+  endif
+endfunction
+"
 " Function ShortTabLine from 'Hacking VIM' (Kim Schulz)
 "
 function! ShortTabLine()
@@ -52,12 +63,13 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   let g:config = { 'goto-thing-handler-mapping-lhs' : 'gf' }
 
   let plugins = {
-      \ 'always': ["vim-addon-completion", 'vim-addon-async', 'tlib', "vim-addon-toggle-buffer", "vim-addon-git","vim-addon-mw-utils","snipMate","vim-addon-goto-thing-at-cursor","vim-addon-other", 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand', 'searchInRuntime', 'AutoAlign', 'Align294', 'vim-addon-signs'],
-      \ 'extra' : ['textobj-diff', "textobj-function",  "narrow_region"],
-      \ 'vim': ["reload", 'vim-dev-plugin'],
-      \ 'sql': ['vim-addon-sql'],
-      \ 'urweb': ["vim-addon-urweb"],
-      \ 'nix' : ["vim-addon-nix"],
+      \ 'always': ['vim-addon-completion', 'vim-addon-async', 'tlib', 'vim-addon-toggle-buffer', 'vim-addon-git', 'vim-addon-mw-utils', 'snipMate', 'vim-addon-goto-thing-at-cursor', 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand', 'searchInRuntime', 'AutoAlign', 'Align294', 'vim-addon-signs'], 
+      \ 'extra' : ['textobj-diff', 'textobj-function', 'narrow_region'], 
+      \ 'vim': ['reload', 'vim-dev-plugin'], 
+      \ 'vme': ['vim-syntax-vme-scl', 'vim-syntax-vme-mtup', 'vim-syntax-vme-ddcl', 'vim-syntax-vme-idmsx', 'vim-syntax-vme-tp-pfile', 'vim-syntax-vme-tp-tpstats', 'vim-syntax-vme-tp-tptext', 'vim-syntax-vme-tp-tsin' ], 
+      \ 'sql': ['vim-addon-sql'], 
+      \ 'urweb': ['vim-addon-urweb'], 
+      \ 'nix' : ['vim-addon-nix'], 
       \ }
   let activate = []
   for [k,v] in items(plugins)
