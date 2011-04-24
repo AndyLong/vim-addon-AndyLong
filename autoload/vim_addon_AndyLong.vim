@@ -76,7 +76,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
     if k == 'always' 
           \ || (type(a:vam_features) == type([]) && index(a:vam_features, k) >= 0)
           \ || (type(a:vam_features) == type('') && a:vam_features == 'all')
-      echoe "Selecting addon '".v."'"
+      echoe "Selecting addon '".k."'"
       call extend(activate, v)
       echoe "selected"
     endif
