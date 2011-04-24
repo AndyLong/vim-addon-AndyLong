@@ -76,7 +76,9 @@ fun! vim_addon_AndyLong#Activate(vam_features)
     if k == 'always' 
           \ || (type(a:vam_features) == type([]) && index(a:vam_features, k) >= 0)
           \ || (type(a:vam_features) == type('') && a:vam_features == 'all')
+      echoe "Selecting addon '".v."'"
       call extend(activate, v)
+      echoe "selected"
     endif
   endfor
 
@@ -88,7 +90,9 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   " "vim-addon-povray",
   " "vim-addon-lout",
   " \ "delimitMate",
+  echoe "activating selected add-ons"
   call vam#ActivateAddons(activate,{'auto_install':1})
+  echoe "Activated?"
 
   " command MergePluginFiles call vam#install#MergePluginFiles(g:merge+["tlib"], '\%(cmdlinehelp\|concordance\|evalselection\|glark\|hookcursormoved\|linglang\|livetimestamp\|localvariables\|loremipsum\|my_tinymode\|pim\|scalefont\|setsyntax\|shymenu\|spec\|tassert\|tbak\|tbibtools\|tcalc\|tcomment\|techopair\|tgpg\|tmarks\|tmboxbrowser\|tortoisesvn\|tregisters\|tselectbuffer\|tselectfile\|tsession\|tskeleton\|tstatus\|viki\|vikitasks\)\.vim_merged')
   " command UnmergePluginFiles call vam#install#UnmergePluginFiles()
