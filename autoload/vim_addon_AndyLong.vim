@@ -63,7 +63,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   let g:config = { 'goto-thing-handler-mapping-lhs' : 'gf' }
 
   let plugins = {
-      \ 'always': ['vim-addon-completion', 'TToC', 'tmru', 'tlib', 'vim-addon-git', 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand',  'Map_Tools', 'lh-vim-lib', 'searchInRuntime', 'mu-template-lh', 'AutoAlign', 'Align294', 'vim-addon-signs', 'The_NERD_Commenter', 'The_NERD_tree' ], 
+      \ 'always': ['vim-addon-completion', 'ttoc', 'tmru', 'tlib', 'vim-addon-git', 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand',  'Map_Tools', 'lh-vim-lib', 'searchInRuntime', 'mu-template-lh', 'AutoAlign', 'Align294', 'vim-addon-signs', 'The_NERD_Commenter', 'The_NERD_tree' ], 
       \ 'extra' : ['textobj-diff', 'textobj-function', 'narrow_region'], 
       \ 'vim': ['reload', 'vim-dev-plugin'], 
       \ 'vme': ['github:AndyLong/vim-syntax-vme-scl', 'github:AndyLong/vim-syntax-vme-mtup', 'github:AndyLong/vim-syntax-vme-ddcl', 'github:AndyLong/vim-syntax-vme-idmsx', 'github:AndyLong/vim-syntax-vme-tp-pfile', 'github:AndyLong/vim-syntax-vme-tp-tpstats', 'github:AndyLong/vim-syntax-vme-tp-tptext', 'github:AndyLong/vim-syntax-vme-tp-tsin' ], 
