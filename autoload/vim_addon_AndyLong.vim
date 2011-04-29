@@ -93,7 +93,7 @@ function! ShortTabLine()
 endfunction
 
 fun! vim_addon_AndyLong#Activate(vam_features)
-  echomsg Entering vim_addon_AndyLong#Activate
+  echomsg "Entering vim_addon_AndyLong#Activate"
   let g:vim_addon_urweb = { 'use_vim_addon_async' : 1 }
   let g:netrw_silent = 0
   let g:linux=1
@@ -396,6 +396,6 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
   autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
   aug END
-  echomsg Leaving vim_addon_AndyLong#Activate
+  echomsg "Leaving vim_addon_AndyLong#Activate"
 endf
 
