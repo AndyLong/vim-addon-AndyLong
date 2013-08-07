@@ -93,14 +93,13 @@ function! ShortTabLine()
 endfunction
 
 fun! vim_addon_AndyLong#Activate(vam_features)
-  echomsg "Entering vim_addon_AndyLong#Activate"
   let g:vim_addon_urweb = { 'use_vim_addon_async' : 1 }
   let g:netrw_silent = 0
   let g:linux=1
   let g:config = { 'goto-thing-handler-mapping-lhs' : 'gf' }
 
   let plugins = {
-      \ 'always': ['vim-addon-completion', 'ttoc', 'tmru', 'tlib', 'vim-addon-git', 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand',  'Map_Tools', 'lh-vim-lib', 'searchInRuntime', 'mu-template-lh', 'AutoAlign', 'Align294', 'vim-addon-signs', 'The_NERD_Commenter', 'The_NERD_tree' ], 
+      \ 'always': ['vim-addon-completion', 'ttoc', 'tmru', 'tlib', 'vim-addon-git', 'matchit.zip', 'VisIncr', 'YankRing', 'vcscommand',  'lh-brackets', 'lh-vim-lib', 'search-in-runtime', 'mu-template@lh', 'AutoAlign', 'Align%294', 'vim-addon-signs', 'The_NERD_Commenter', 'The_NERD_tree' ], 
       \ 'extra' : ['textobj-diff', 'textobj-function', 'narrow_region'], 
       \ 'vim': ['reload', 'vim-dev-plugin'], 
       \ 'vme': ['github:AndyLong/vim-syntax-vme-scl', 'github:AndyLong/vim-syntax-vme-mtup', 'github:AndyLong/vim-syntax-vme-ddcl', 'github:AndyLong/vim-syntax-vme-idmsx', 'github:AndyLong/vim-syntax-vme-tp-pfile', 'github:AndyLong/vim-syntax-vme-tp-tpstats', 'github:AndyLong/vim-syntax-vme-tp-tptext', 'github:AndyLong/vim-syntax-vme-tp-tsin' ], 
@@ -142,9 +141,9 @@ fun! vim_addon_AndyLong#Activate(vam_features)
     set timeoutlen=200
   endif
 " set guioptions+=c
-  set guioptions+=M
-  set guioptions-=m
-  set guioptions-=T
+"  set guioptions+=M
+"  set guioptions-=m
+"  set guioptions-=T
   set guioptions-=r
   set guioptions-=l
 
@@ -180,7 +179,7 @@ fun! vim_addon_AndyLong#Activate(vam_features)
     \   exe "normal g`\"" |
     \ endif
 " }}}e
-|
+
 " window cursor movement
   nnoremap <m-s-v><m-s-p> :exec "wincmd g\<c-]>" <bar> exec 'syntax keyword Tag '.expand('<cword>')<cr>
   vnoremap <m-s-v><m-s-p> y:sp<bar>tjump <c-r>"<cr>
@@ -396,6 +395,5 @@ fun! vim_addon_AndyLong#Activate(vam_features)
   autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
   autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
   aug END
-  echomsg "Leaving vim_addon_AndyLong#Activate"
 endf
 
